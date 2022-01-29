@@ -29,3 +29,12 @@ def generacionUbicacion(listaPedidos:list):
 
 
 
+pedidos,garrafones = generarPedidos()
+
+for i in range(5):
+    hijos = generarCruza(pedidos.copy())
+    combinados = hijos + pedidos.copy()
+    pedidos = combinados
+
+for i in pedidos:
+    print(i)
