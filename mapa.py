@@ -37,4 +37,4 @@ def puntoCercano(x1,y1):
         
                         
                         
-print(puntoCercano(16.748917, -93.122969))
+# print(puntoCercano(16.748917, -93.122969))
