@@ -49,55 +49,40 @@ def generacionUbicacion():
     return infomracionGeneralUbicacion
 
 
+def algoritmogenetico():
+    pedidos,garrafones,ubicacion,beneficio = generarPedidos()
 
-
-
-
-
-pedidos,garrafones,ubicacion,beneficio = generarPedidos()
-
-# print(f"pedidos {pedidos}")
-# print(f"garrafones {garrafones}")
-# print(f"ubicacion {ubicacion}")
-# print(f"beneficio {beneficio}")
-
-for i in range(100):
-    hijos = generarCruza(pedidos.copy())
-    hijos = mutacion(hijos.copy())
-    combinados = hijos + pedidos.copy()
-    pedidos = combinados
-    pedidos = podaMejoresIndividuos(beneficio,garrafones,pedidos)
-    # print(pedidos)
-
-listaMejoresPedidos = []
-for i in pedidos:
-    listaMejoresPedidos.append(getAptitud(beneficio,garrafones,i,False))
-
-valorMaximo = max(listaMejoresPedidos)
-indexMejor = listaMejoresPedidos.index(valorMaximo)
-
-mejorIndividuo = pedidos[indexMejor]
-mejorAptitudIndividuo = getAptitud(beneficio,garrafones,pedidos[indexMejor],True)
-
-# print(f"mejor valor {pedidos[indexMejor]}")
-# print(f"pedidos {getAptitud(beneficio,garrafones,pedidos[indexMejor],True)}")
+    for i in range(100):
+        hijos = generarCruza(pedidos.copy())
+        hijos = mutacion(hijos.copy())
+        combinados = hijos + pedidos.copy()
+        pedidos = combinados
+        pedidos = podaMejoresIndividuos(beneficio,garrafones,pedidos)
+    
+    
+    listaMejoresPedidos = []
+    for i in pedidos:
+        listaMejoresPedidos.append(getAptitud(beneficio,garrafones,i,False))
+    
+    valorMaximo = max(listaMejoresPedidos)
+    indexMejor = listaMejoresPedidos.index(valorMaximo)
+    
+    mejorAptitudIndividuo = getAptitud(beneficio,garrafones,pedidos[indexMejor],True)
+    
+    print(f"mejor valor {pedidos[indexMejor]}")
+    print(f"pedidos {getAptitud(beneficio,garrafones,pedidos[indexMejor],True)}")
+    
+    # aqui obteienes la lista de los pedidiso que entran, y le sacas la ubicacion por su id
+    
+    for i in mejorAptitudIndividuo[0]:
+        print(ubicacion[i])
+    
+algoritmogenetico()
+    
     
 
-    # print(generacionUbicacion())
 
 
 
-# for i in pedidos:
-#     print("\n APTITUD")
-#     print(i)
-#     getAptitud(beneficio,garrafones,i,False)
+    
 
-# for i in garrafones:
-#     print(i)
-
-# for i in beneficio:
-#     print(i)
-
-
-# for i in pedidos:
-#     print(i)
