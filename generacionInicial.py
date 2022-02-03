@@ -1,7 +1,7 @@
 import random
 from cruza import generarCruza
 import dijkstra
-from mapa import puntoCercano
+from mapa import puntoCercano, recorrido
 from mutacion import mutacion
 from poda import podaMejoresIndividuos
 from varios import getAptitud
@@ -51,33 +51,52 @@ def generacionUbicacion():
 
 def algoritmogenetico():
     pedidos,garrafones,ubicacion,beneficio = generarPedidos()
+    numeroPedidos = len(pedidos[0])
+    print(pedidos)
+    print(garrafones)
 
-    for i in range(100):
-        hijos = generarCruza(pedidos.copy())
-        hijos = mutacion(hijos.copy())
-        combinados = hijos + pedidos.copy()
-        pedidos = combinados
-        pedidos = podaMejoresIndividuos(beneficio,garrafones,pedidos)
-    
-    
-    listaMejoresPedidos = []
-    for i in pedidos:
-        listaMejoresPedidos.append(getAptitud(beneficio,garrafones,i,False))
-    
-    valorMaximo = max(listaMejoresPedidos)
-    indexMejor = listaMejoresPedidos.index(valorMaximo)
-    
-    mejorAptitudIndividuo = getAptitud(beneficio,garrafones,pedidos[indexMejor],True)
-    
-    print(f"mejor valor {pedidos[indexMejor]}")
-    print(f"pedidos {getAptitud(beneficio,garrafones,pedidos[indexMejor],True)}")
-    
-    # aqui obteienes la lista de los pedidiso que entran, y le sacas la ubicacion por su id
-    
-    for i in mejorAptitudIndividuo[0]:
-        print(ubicacion[i])
-    
-algoritmogenetico()
+    while numeroPedidos>0:
+        print("\n INICIA VUELTA")
+        for i in range(100):
+            hijos = generarCruza(pedidos.copy())
+            hijos = mutacion(hijos.copy())
+            combinados = hijos + pedidos.copy()
+            pedidos = combinados
+            pedidos = podaMejoresIndividuos(beneficio,garrafones,pedidos)
+
+
+        listaMejoresPedidos = []
+        for i in pedidos:
+            listaMejoresPedidos.append(getAptitud(beneficio,garrafones,i,False))
+
+        valorMaximo = max(listaMejoresPedidos)
+        indexMejor = listaMejoresPedidos.index(valorMaximo)
+
+        mejorAptitudIndividuo = getAptitud(beneficio,garrafones,pedidos[indexMejor],True)
+
+        # print(f"mejor valor {pedidos[indexMejor]}")
+        # print(f"pedidos {getAptitud(beneficio,garrafones,pedidos[indexMejor],True)}")
+
+        # aqui obteienes la lista de los pedidiso que entran, y le sacas la ubicacion por su id
+
+        pedidosAuxiliar = pedidos[0]
+        pedidosAuxiliar.sort()
+        
+        ubicacionesReccorrido = []
+        for i in mejorAptitudIndividuo[0]:
+            # print(i)
+            pedidosAuxiliar.remove(i)
+            ubicacionesReccorrido.append(ubicacion[i])
+            print(ubicacion[i])
+        # aqui se envia la ubicacion
+        recorrido(nodoSucursal,ubicacionesReccorrido.copy())
+
+        listaPedidosAuxiliarRevuelta = random.sample(pedidosAuxiliar, len(pedidosAuxiliar))
+        # print(pedidosAuxiliar,listaPedidosAuxiliarRevuelta)
+
+        pedidos = [pedidosAuxiliar,listaPedidosAuxiliarRevuelta]
+        numeroPedidos= len(pedidosAuxiliar)
+    return True 
     
     
 
