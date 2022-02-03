@@ -30,14 +30,17 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>30</y>
-      <width>651</width>
+      <x>290</x>
+      <y>20</y>
+      <width>201</width>
       <height>41</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
+    </property>
     <property name="text">
-     <string>AQUI VA TU DESCR......</string>
+     <string>Pedidos y Rutas</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_Recibir_pedidos">
@@ -69,8 +72,8 @@
    <widget class="QTableWidget" name="table_Pedidos">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>70</y>
+      <x>60</x>
+      <y>90</y>
       <width>671</width>
       <height>271</height>
      </rect>

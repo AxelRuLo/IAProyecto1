@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(763, 548)
+        Form.resize(994, 548)
         self.pushButton_Anterior = QtWidgets.QPushButton(Form)
         self.pushButton_Anterior.setGeometry(QtCore.QRect(30, 340, 75, 23))
         self.pushButton_Anterior.setObjectName("pushButton_Anterior")
@@ -25,6 +25,14 @@ class Ui_Form(object):
         self.pushButton_Siguiente = QtWidgets.QPushButton(Form)
         self.pushButton_Siguiente.setGeometry(QtCore.QRect(30, 170, 75, 23))
         self.pushButton_Siguiente.setObjectName("pushButton_Siguiente")
+        self.table_pedidos = QtWidgets.QTableWidget(Form)
+        self.table_pedidos.setGeometry(QtCore.QRect(780, 20, 171, 301))
+        self.table_pedidos.setObjectName("table_pedidos")
+        self.table_pedidos.setColumnCount(1)
+        self.table_pedidos.setRowCount(0)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_pedidos.setHorizontalHeaderItem(0, item)
+        self.table_pedidos.horizontalHeader().setDefaultSectionSize(150)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -34,3 +42,5 @@ class Ui_Form(object):
         Form.setWindowTitle(_translate("Form", "Form"))
         self.pushButton_Anterior.setText(_translate("Form", "Anterior"))
         self.pushButton_Siguiente.setText(_translate("Form", "Siguiente"))
+        item = self.table_pedidos.horizontalHeaderItem(0)
+        item.setText(_translate("Form", "Pedidos"))

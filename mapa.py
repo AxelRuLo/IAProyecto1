@@ -30,6 +30,8 @@ recorridos_nodos =[]
 
 recorrido_extenso = []
 
+pedidos_recorrido = []
+
 
 def puntoCercano(x1,y1):
         listaPuntos = []
@@ -49,11 +51,12 @@ def puntoCercano(x1,y1):
         return listaPuntos[punto]
         
 
-def recorrido(nodoInicial,listUbicaciones):
+def recorrido(nodoInicial,listUbicaciones,listPedidos):
         
-        print("--------------------------------------------")
+        # print("--------------------------------------------")
         listaRecorrido = []
         listaCordenadas = []
+        pedidos_recorrido.append(tablePedidos(listPedidos.copy()))
         
         listaRecorrido.append(nodoInicial)
         listaCordenadas.append(mapa_lineas[nodoInicial])
@@ -73,20 +76,20 @@ def recorrido(nodoInicial,listUbicaciones):
 
 
         recorridos.append(listaCordenadas.copy()) 
-        print(listaRecorrido)
+        # print(listaRecorrido)
         # listaRecorrido.sort()
         recorridos_nodos.append(listaRecorrido.copy())
         
         # print(listaCordenadas)
         recorridoExtenso(listaRecorrido.copy())
-        print("--------------------------------------------")
+        # print("--------------------------------------------")
         
 def recorridoExtenso(listNodos):
         global recorrido_extenso
         recorrido_ruta_nodo= []
         recorrido_ruta_cord= []
         
-        print("--------------------------------------------")
+        # print("--------------------------------------------")
         for i in range(len(listNodos)):
                 if(i<len(listNodos)-1):
                         aux =dijkstra.find_shortest_path(listNodos[i],listNodos[i+1])
@@ -102,12 +105,18 @@ def recorridoExtenso(listNodos):
         recorrido_extenso.append(recorrido_ruta_cord.copy())
         
         
-        print("--------------------------------------------")
+        # print("--------------------------------------------")
                 
-
+def tablePedidos(listPedidos):
+        aux = []
+        for i in listPedidos:
+                aux.append(f"{i+1}")
+        return aux
+            
 def cleanRutas():
-        global recorridos,recorridos_nodos,recorrido_extenso
+        global recorridos,recorridos_nodos,recorrido_extenso,pedidos_recorrido
         recorridos.clear()
         recorridos_nodos.clear()
-        recorrido_extenso.clear()              
+        recorrido_extenso.clear()          
+        pedidos_recorrido.clear()    
 # print(puntoCercano(16.748917, -93.122969))
