@@ -50,6 +50,7 @@ def puntoCercano(x1,y1):
         
 
 def recorrido(nodoInicial,listUbicaciones):
+        
         print("--------------------------------------------")
         listaRecorrido = []
         listaCordenadas = []
@@ -103,5 +104,10 @@ def recorridoExtenso(listNodos):
         
         print("--------------------------------------------")
                 
-                        
+
+def cleanRutas():
+        global recorridos,recorridos_nodos,recorrido_extenso
+        recorridos.clear()
+        recorridos_nodos.clear()
+        recorrido_extenso.clear()              
 # print(puntoCercano(16.748917, -93.122969))

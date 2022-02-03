@@ -66,6 +66,39 @@
      <string>Mapeo</string>
     </property>
    </widget>
+   <widget class="QTableWidget" name="table_Pedidos">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>70</y>
+      <width>671</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>165</number>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>Pedidos</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Garrafones</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Ubicacion</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Beneficio</string>
+     </property>
+    </column>
+   </widget>
   </widget>
  </widget>
  <resources/>

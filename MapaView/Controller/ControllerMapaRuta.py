@@ -25,6 +25,9 @@ class ControllerMapaRuta(QWidget):
         
         self.generarMapa()
         
+    def cleanContador(self):
+        self.contador = 0
+        
     def siguiente(self):
         if(self.contador+1 < len(recorrido_extenso)):
             self.contador = self.contador+1

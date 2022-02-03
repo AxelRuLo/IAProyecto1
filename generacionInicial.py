@@ -8,6 +8,8 @@ from varios import getAptitud
 
 nodoSucursal = 63
 
+pedidos_table = []
+
 def generarPedidos():
     listaPedidos = []
     listaNumerosGarrafones = []
@@ -51,6 +53,7 @@ def generacionUbicacion():
 
 def algoritmogenetico():
     pedidos,garrafones,ubicacion,beneficio = generarPedidos()
+    tablePedidos(pedidos.copy(),garrafones.copy(),ubicacion.copy(),beneficio.copy())
     numeroPedidos = len(pedidos[0])
     print(pedidos)
     print(garrafones)
@@ -97,9 +100,18 @@ def algoritmogenetico():
         pedidos = [pedidosAuxiliar,listaPedidosAuxiliarRevuelta]
         numeroPedidos= len(pedidosAuxiliar)
     return True 
-    
-    
+ 
 
+def tablePedidos(pedidos:list,garrafones:list,ubicacion:list,beneficio:list):
+    pedidos_table.clear()
+    for i in range(len(pedidos[0])):
+        pedidos_table.append([f"{pedidos[0][i]+1}",f"{garrafones[i]}",f"{ubicacion[i][0]}",f"{beneficio[i]}"])
+    print(pedidos_table)
+    
+def cleanPedidos():
+    global pedidos_table
+    pedidos_table = []
+    return True
 
 
 
